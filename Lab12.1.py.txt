@@ -1,0 +1,66 @@
+from tkinter import *
+
+def Kol_cifr_sum():
+    n = int(ent1.get())
+    global kol, Sum
+    kol = 0
+    Sum = 0
+    while n != 0:
+        Sum += n % 10
+        n = n // 10
+        kol += 1
+
+def click1():
+    Kol_cifr_sum()
+    
+    ent2.configure(state='normal')
+    ent2.delete(0, END)
+    ent2.insert(0, str(kol))
+    ent2.configure(state='disabled')
+
+    ent3.configure(state='normal')
+    ent3.delete(0, END)
+    ent3.insert(0, str(Sum))
+    ent3.configure(state='disabled')
+
+        
+def click2():
+    ent1.delete(0, END)
+
+    ent2.configure(state='normal')
+    ent2.delete(0, END)
+    ent2.configure(state='disabled')
+
+    ent3.configure(state='normal')
+    ent3.delete(0, END)
+    ent3.configure(state='disabled')    
+
+window = Tk()
+window.title("Laboratory work 11 week")
+window.geometry("300x200")
+
+lbl1 = Label(text = "Input n-> ")
+lbl1.place(x = 15, y = 20)
+
+ent1 = Entry(width = 15)
+ent1.place(x = 80, y = 22)
+
+lbl2 = Label(text = "Kol-vo cifr: ")
+lbl2.place(x = 15, y = 60)
+
+ent2 = Entry(width = 15, state = DISABLED)
+ent2.place(x = 85, y = 62)
+
+lbl3 = Label(text = "Summa cifr: ")
+lbl3.place(x = 15, y = 100)
+
+ent3 = Entry(width = 15, state = DISABLED)
+ent3.place(x = 85, y = 102)
+
+btn1 = Button(text="Выполнить", command = click1)
+btn1.place(x = 35, y = 150)
+
+btn2 = Button(text="Очистить", command = click2)
+btn2.place(x = 160, y = 150)
+
+window.mainloop()
